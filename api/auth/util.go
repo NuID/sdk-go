@@ -8,12 +8,15 @@ import (
 	"io"
 )
 
+// Each call to the API requires an X-API-Key header, and the correct
+// content negotiation headers for JSON.
 func (auth *AuthAPI) defaultHeaders(req *http.Request) {
 	req.Header.Add("X-API-Key", auth.ApiKey)
 	req.Header.Add("Content-Type", "application/json")
 	req.Header.Add("Accept", "application/json")
 }
 
+// Perform a GET request against the API at the given path.
 func (auth *AuthAPI) get(path string) (resp *http.Response, err error) {
 	req, err := http.NewRequest("GET", auth.path(path), nil)
 	if err != nil {
@@ -24,10 +27,13 @@ func (auth *AuthAPI) get(path string) (resp *http.Response, err error) {
 	return http.DefaultClient.Do(req)
 }
 
+// Concat the api host and path together.
 func (auth *AuthAPI) path(path string) string {
 	return fmt.Sprintf("%s%s", auth.Host, path)
 }
 
+// Perform a POST against the API at the given path with the map converted to
+// JSON.
 func (auth *AuthAPI) post(path string, data map[string]interface{}) (resp *http.Response, err error) {
 	body, err := toJSON(data)
 	if err != nil {
