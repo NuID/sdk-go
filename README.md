@@ -1,42 +1,30 @@
 <p align="right"><a href="https://nuid.io"><img src="https://nuid.io/svg/logo.svg" width="20%"></a></p>
 
-# NuID SDK for Ruby
+# NuID SDK for Go
 
-[![](https://img.shields.io/gem/v/nuid-sdk?color=red&logo=rubygems&style=for-the-badge)](https://rubygems.org/gems/nuid-sdk)
-[![](https://img.shields.io/badge/docs-v0.1.0-blue?style=for-the-badge&logo=read-the-docs)](https://rubydoc.info/gems/nuid-sdk)
+[![](https://img.shields.io/github/go-mod/go-version/NuID/sdk-go/main?color=red&label=go.mod&logo=go&logoColor=white&style=for-the-badge)](https://github.com/NuID/sdk-go)
+[![](https://img.shields.io/badge/docs-v0.1.0-blue?style=for-the-badge&logo=read-the-docs)](https://pkg.go.dev/github.com/NuID/sdk-go)
 [![](https://img.shields.io/badge/docs-platform-purple?style=for-the-badge&logo=read-the-docs)](https://portal.nuid.io/docs)
 
-This repo provides a Ruby Gem for interacting with NuID APIs within Ruby
+This repo provides a library for interacting with NuID APIs within go
 applications.
 
-Read the latest [gem
+Read the latest [package
 docs](https://rubydoc.info/gems/nuid-sdk/) or
 checkout the [platform docs](https://portal.nuid.io/docs) for API docs, guides,
 video tutorials, and more.
 
 ## Install
 
-From [rubygems](https://rubygems.org/gems/nuid-sdk):
-
 ```sh
-gem install nuid-sdk -v "0.1.1"
+GO111MODULE=on go get github.com/NuID/sdk-go@v0.1.0
 ```
 
-Or with bundler:
-
-```ruby
-# Gemfile
-gem "nuid-sdk", "~> 0.1.1"
-```
-
-## Usage
-
-Example rails auth controller.
+## Usage (TODO)
 
 For a more detailed example visit the [Integrating with
 NuID](https://portal.nuid.io/docs/guides/integrating-with-nuid) guide and the
 accompanying [examples repo](https://github.com/NuID/examples).
-A ruby-specific code example is coming soon.
 
 ```ruby
 require "nuid-sdk"
@@ -62,6 +50,7 @@ class UsersController < ApplicationController
     else
       render status: :bad_request
     end
+A runnable go example is coming soon.
   end
 end
 ```
@@ -121,25 +110,17 @@ end
 You'll want to download docker to run the tests, as we depend on the
 `@nuid/cli` npm package to provide a CLI you can shell out to
 in the tests for generating zk crypto. After checking out the repo, run
-`bin/setup` to install dependencies and create the docker environment. Then, run
-`make test` to run the tests inside the running container. You can also run
-`bin/console` for an interactive prompt that will allow you to experiment, but
-you'll probably want to run that in the container (use `make shell` to get a
-prompt in the container).
+`make build run` to install dependencies and create the docker environment.
+Then, run `make test` to run the tests inside the running container. You can
+also run `make shell` to get a prompt in the container.
 
 `make clean` will stop and destroy the container and image. `make build run`
 will rebuild the image and run the container.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To
-release a new version, update the version number in `version.rb`, and then run
-`bundle exec rake release`, which will create a git tag for the version, push
-git commits and tags, and push the `.gem` file to
-[rubygems.org](https://rubygems.org).
-
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/NuID/sdk-ruby.
+Bug reports and pull requests are welcome on GitHub at https://github.com/NuID/sdk-go.
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The library is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).

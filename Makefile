@@ -24,6 +24,6 @@ stop:
 	docker stop $(container)
 
 test:
-	docker exec -it $(container) rake test
+	docker exec -it $(container) go test -count 1 ./...
 
 .PHONY: test

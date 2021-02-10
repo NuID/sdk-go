@@ -1,23 +1,46 @@
 package api_auth
 
-type Credential interface{}
+import (
+	"bytes"
+	"encoding/base64"
+	"encoding/json"
+	"errors"
+)
 
 type AuthAPI struct {
-	apiKey string
-	url    string
+	ApiKey string
+	Host   string
 }
 
-type VerifiedCredential interface{}
+type JWT string
 
 type ChallengeGetResponse struct {
-	challengeJWT string `json:"nuid.credential.challenge/jwt"`
+	ChallengeJWT JWT `json:"nuid.credential.challenge/jwt"`
+}
+
+func (jwt JWT) Claims() (claims map[string]interface{}, err error) {
+	parts := bytes.Split([]byte(jwt), []byte("."))
+	encodedClaims := parts[1]
+	if encodedClaims == nil {
+		err = errors.New("Unable to decode JWT claims")
+		return
+	}
+	claimsJSON, err := base64.RawStdEncoding.DecodeString(string(encodedClaims))
+	if err != nil {
+		return
+	}
+	err = json.Unmarshal(claimsJSON, &claims)
+	if err != nil {
+		return
+	}
+	return
 }
 
 type CredentialCreateResponse struct {
-	nuid string            `json:"nu/id"`
-	credential *Credential `json:"nuid/credential"`
+	NuID string                       `json:"nu/id"`
+	Credential map[string]interface{} `json:"nuid/credential"`
 }
 
 type CredentialGetResponse struct {
-	credential *Credential `json:"nuid/credential"`
+	Credential map[string]interface{} `json:"nuid/credential"`
 }
