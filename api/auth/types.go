@@ -7,14 +7,21 @@ import (
 	"errors"
 )
 
-// The AuthAPI struct contains the API Key and Host. Methods are callable from
+// The APIClient struct contains the API Key and Host. Methods are callable from
 // this type to interact with the API and parse responses.
-type AuthAPI struct {
+type APIClient struct {
 	// The ApiKey can be found in your free portal account at https://portal.nuid.io
 	ApiKey string
 
 	// The Host name of the auth API (you probably want https://auth.nuid.io)
 	Host   string
+}
+
+func NewAPIClient(apiKey string) *APIClient {
+	return &APIClient{
+		ApiKey: apiKey,
+		Host: "https://auth.nuid.io",
+	}
 }
 
 type JWT string

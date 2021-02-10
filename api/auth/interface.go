@@ -15,7 +15,7 @@ import (
 //
 // The credential is usually retrieved by calling the auth.CredentialGet()
 // method.
-func (auth *AuthAPI) ChallengeGet(credential map[string]interface{}) (resp *http.Response, body *ChallengeGetResponse, err error) {
+func (auth *APIClient) ChallengeGet(credential map[string]interface{}) (resp *http.Response, body *ChallengeGetResponse, err error) {
 	resp, err = auth.post("/challenge", map[string]interface{}{
 		"nuid/credential": credential,
 	})
@@ -47,7 +47,7 @@ func (auth *AuthAPI) ChallengeGet(credential map[string]interface{}) (resp *http
 //
 // See https://www.npmjs.com/package/@nuid/zk
 // See https://www.npmjs.com/package/@nuid/cli
-func (auth *AuthAPI) ChallengeVerify(challengeJWT JWT, proof map[string]interface{}) (resp *http.Response, err error) {
+func (auth *APIClient) ChallengeVerify(challengeJWT JWT, proof map[string]interface{}) (resp *http.Response, err error) {
 	resp, err = auth.post("/challenge/verify", map[string]interface{}{
 		"nuid.credential.challenge/jwt": challengeJWT,
 		"nuid.credential/proof": proof,
@@ -69,7 +69,7 @@ func (auth *AuthAPI) ChallengeVerify(challengeJWT JWT, proof map[string]interfac
 // See auth.CredentialGet(nuid)
 // See https://www.npmjs.com/package/@nuid/zk
 // See https://www.npmjs.com/package/@nuid/cli
-func (auth *AuthAPI) CredentialCreate(verifiedCredential map[string]interface{}) (resp *http.Response, body *CredentialCreateResponse, err error) {
+func (auth *APIClient) CredentialCreate(verifiedCredential map[string]interface{}) (resp *http.Response, body *CredentialCreateResponse, err error) {
 	resp, err = auth.post("/credential", map[string]interface{}{
 		"nuid.credential/verified": verifiedCredential,
 	})
@@ -100,7 +100,7 @@ func (auth *AuthAPI) CredentialCreate(verifiedCredential map[string]interface{})
 // registration. Later during login use the NuID to fetch the credential using
 // this method, passing the returned credential from the response body to
 // auth.ChallengeGet().
-func (auth *AuthAPI) CredentialGet(nuid string) (resp *http.Response, body *CredentialGetResponse, err error) {
+func (auth *APIClient) CredentialGet(nuid string) (resp *http.Response, body *CredentialGetResponse, err error) {
 	resp, err = auth.get("/credential/" + nuid)
 	if err != nil {
 		return

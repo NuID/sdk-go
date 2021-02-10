@@ -7,11 +7,11 @@ import (
 	"testing"
 )
 
-var api *AuthAPI
+var api *APIClient
 
 func TestRoundTrip(t *testing.T) {
 	secret := "test secret"
-	api = &AuthAPI{
+	api = &APIClient{
 		ApiKey: os.Getenv("NUID_AUTH_API_KEY"),
 		Host: os.Getenv("NUID_AUTH_API_HOST"),
 	}
