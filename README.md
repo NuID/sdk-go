@@ -3,7 +3,7 @@
 # NuID SDK for Go
 
 [![](https://img.shields.io/github/go-mod/go-version/NuID/sdk-go/main?color=red&label=go.mod&logo=go&logoColor=white&style=for-the-badge)](https://github.com/NuID/sdk-go)
-[![](https://img.shields.io/badge/docs-v0.1.0-blue?style=for-the-badge&logo=read-the-docs)](https://pkg.go.dev/github.com/NuID/sdk-go)
+[![](https://img.shields.io/badge/docs-v0.1.2-blue?style=for-the-badge&logo=read-the-docs)](https://pkg.go.dev/github.com/NuID/sdk-go)
 [![](https://img.shields.io/badge/docs-platform-purple?style=for-the-badge&logo=read-the-docs)](https://portal.nuid.io/docs)
 
 This repo provides a library for interacting with NuID APIs within go
@@ -17,7 +17,7 @@ video tutorials, and more.
 ## Install
 
 ```sh
-GO111MODULE=on go get github.com/NuID/sdk-go@v0.1.0
+GO111MODULE=on go get github.com/NuID/sdk-go
 ```
 
 ## Usage (TODO)
