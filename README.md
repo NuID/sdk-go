@@ -9,8 +9,7 @@
 This repo provides a library for interacting with NuID APIs within go
 applications.
 
-Read the latest [package
-docs](https://rubydoc.info/gems/nuid-sdk/) or
+Read the latest [package docs](https://pkg.go.dev/github.com/NuID/sdk-go) or
 checkout the [platform docs](https://portal.nuid.io/docs) for API docs, guides,
 video tutorials, and more.
 
@@ -20,21 +19,23 @@ video tutorials, and more.
 GO111MODULE=on go get github.com/NuID/sdk-go
 ```
 
-## Usage (TODO)
+## Usage
 
-For a more detailed example visit the [Integrating with
-NuID](https://portal.nuid.io/docs/guides/integrating-with-nuid) guide and the
-accompanying [examples repo](https://github.com/NuID/examples).
-A runnable go example is coming soon.
+A fully working go server example can be found in our [examples
+repo](https://github.com/NuID/examples/tree/main/go).
+
+Visit the [Integrating with
+NuID guide](https://portal.nuid.io/docs/guides/integrating-with-nuid) for a
+detailed walk-through on your first NuID integration.
 
 ## Development
 
-You'll want to download docker to run the tests, as we depend on the
-`@nuid/cli` npm package to provide a CLI you can shell out to
-in the tests for generating zk crypto. After checking out the repo, run
-`make build run` to install dependencies and create the docker environment.
-Then, run `make test` to run the tests inside the running container. You can
-also run `make shell` to get a prompt in the container.
+You'll want to download docker to run the tests, as we depend on the `@nuid/cli`
+npm package to provide a CLI you can shell out to in the tests for generating zk
+crypto. After checking out the repo, run `make build run` to install
+dependencies and create the docker environment. Then, run `make test` to run the
+tests inside the running container. You can also run `make shell` to get a
+prompt in the container.
 
 `make clean` will stop and destroy the container and image. `make build run`
 will rebuild the image and run the container.
